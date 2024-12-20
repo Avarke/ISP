@@ -1,0 +1,109 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Django App
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">My Django App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">{% block content %} {% endblock %}</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html> {% endcomment %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Knygynas{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+
+       
+            <a href={% url 'knygynas:index' %} class="btn btn-outline navbar-brand">Knygynas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url 'knygynas:index' %}>Pagrindinis</a></li>
+              
+                   
+                </ul>
+                <form class="d-flex">
+                    <!-- Cart button -->
+                    <a href="{% url 'knygynas:krepselis' %}" class="btn btn-outline-dark ms-3">
+                        <i class="bi-person-fill me-1"></i>
+                        Krepselis
+                    </a>
+                    <!-- User icon -->
+                    <a href="{% url 'knygynas:vartotojas' %}" class="btn btn-outline-dark ms-3">
+                        <i class="bi-person-fill me-1"></i>
+                        Vartotojas
+                    </a>
+                        <a href="{% url 'knygynas:login' %}" class="btn btn-outline-dark ms-3">
+                            <i class="bi-person-fill me-1"></i>
+                            Prisijungti
+                        </a>
+                        <a href="{% url 'knygynas:sign-up' %}" class="btn btn-outline-dark ms-3">
+                            <i class="bi-person-fill me-1"></i>
+                            Registruotis
+                        </a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content section -->
+    <div class="container">
+        {% block content %}
+        <!-- Content will be inserted here from other templates -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; knygynas</p></div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+
+
+
+
+
